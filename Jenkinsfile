@@ -1,7 +1,9 @@
-  stages {
+pipeline {    
+    stages {
         stage('build') {
             steps {
-                sh 'ls'
+                sh 'uname'
             }
         }
     }
+}
