@@ -1,2 +1,4 @@
 FROM nginx:latest
-COPY startboostrat- dest
+COPY startbootstrap-resumen-gh-pages /usr/share/nginx/html
+EXPOSE 80
+
