@@ -1,4 +1,4 @@
 FROM nginx:latest
-COPY startbootstrap-resumen-gh-pages /usr/share/nginx/html
+COPY startbootstrap-resume-gh-pages /usr/share/nginx/html
 EXPOSE 80
 
