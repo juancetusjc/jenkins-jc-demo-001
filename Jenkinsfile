@@ -29,8 +29,12 @@ pipeline {
     stage('Deploy') {
       steps {
         echo "DEPLOY"
-        //sh "docker tag app juancetu/app:stable"
-        //sh "docker push app juancetu/app:stable"
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pwd', usernameVariable: 'juancetu')]) {
+          sh "docker tag app juancetu/app:stable"
+          sh "docker push app juancetu/app:stable"
+        }
+
+        
         
     }
 
