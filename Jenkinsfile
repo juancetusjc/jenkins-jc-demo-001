@@ -13,8 +13,9 @@ pipeline {
         echo "TEST"
         sh "docker run --rm --name app -id -p 80:80 app:test"
         sh "/bin/nc -vz localhost 80"
-      } post{
-          alwayas{
+      }
+      post{
+        alwayas{
             sh "docker container stop app"
           }
       }
