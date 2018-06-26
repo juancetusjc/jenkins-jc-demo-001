@@ -3,21 +3,30 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t app .'
+        echo "BUILD"
+        sh 'docker build -t app:test .'
       }      
     }
 
     stage('Test') {
       steps {
-        sh "/bin/nc -vz localhost 22"
-        //sh "/bin/nc -vz localhost 80"
-      }      
+        echo "TEST"
+        sh "docker run --rm --name app -id -p 80:80 app:test"
+        sh "/bin/nc -vz localhost 80"
+      } post{
+          alwayas{
+            sh "docker container stop app"
+          }
+      }
+
     }
     stage('Deploy') {
       steps {
-        sh "docker tag app:test app:stable"
-        echo 'DEPLOY'
+        echo "DEPLOY"
+        //sh "docker tag app:test app:stable"
+        
     }
+
       }      
 
 
